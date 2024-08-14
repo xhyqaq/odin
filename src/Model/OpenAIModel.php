@@ -29,10 +29,11 @@ class OpenAIModel implements ModelInterface
         int $maxTokens = 0,
         array $stop = [],
         array $tools = [],
+        bool $stream = false,
     ): ChatCompletionResponse
     {
         $client = $this->getOpenAIClient();
-        return $client->chat($messages, $this->model, $temperature, $maxTokens, $stop, $tools);
+        return $client->chat($messages, $this->model, $temperature, $maxTokens, $stop, $tools,$stream);
     }
 
     protected function getOpenAIClient(): Client

@@ -30,9 +30,10 @@ class ChatglmModel implements ModelInterface, EmbeddingInterface
         int $maxTokens = 0,
         array $stop = [],
         array $tools = [],
+        bool $stream = false,
     ): ChatCompletionResponse {
         $client = $this->getChatglmClient();
-        return $client->chat($messages, $this->model, $temperature, $maxTokens, $stop, $tools);
+        return $client->chat($messages, $this->model, $temperature, $maxTokens, $stop, $tools,$stream);
     }
 
     public function getChatglmClient(): ChatglmClient

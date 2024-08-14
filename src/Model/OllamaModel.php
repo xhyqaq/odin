@@ -29,10 +29,11 @@ class OllamaModel implements ModelInterface, EmbeddingInterface
         int $maxTokens = 0,
         array $stop = [],
         array $tools = [],
+        bool $stream = false,
     ): ChatCompletionResponse
     {
         $client = $this->getOllamaClient();
-        return $client->chat($messages, $this->model, $temperature, $maxTokens, $stop, $tools);
+        return $client->chat($messages, $this->model, $temperature, $maxTokens, $stop, $tools,$stream);
     }
 
     public function embedding(string $input): Embedding
